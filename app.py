@@ -128,7 +128,7 @@ if not API_KEY:
     st.stop()
 
 # ── Input Panel ───────────────────────────────────────────────────────────────
-st.markdown('<div class="section-label">⚙️ Configuration</div>', unsafe_allow_html=True)
+# st.markdown('<div class="section-label">⚙️ Configuration</div>', unsafe_allow_html=True)
 
 col1, col2 = st.columns([3, 2], gap="large")
 
