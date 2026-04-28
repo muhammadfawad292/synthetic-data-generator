@@ -75,7 +75,7 @@ Use this exact structure:
 # ── Gemini Call ───────────────────────────────────────────────────────────────
 def generate_conversations(niche, instructions, num_convos, length):
     genai.configure(api_key=API_KEY)
-    model = genai.GenerativeModel("gemini-1.5-flash")
+    model = genai.GenerativeModel("gemini-2.5-flash")
     prompt = build_prompt(niche, instructions, num_convos, length)
     response = model.generate_content(prompt)
     return response.text
@@ -153,10 +153,12 @@ with col2:
         horizontal=True,
         help="Short = 3 turns · Medium = 6 turns · Long = 10 turns",
     )
+    total_messages = LENGTH_MAP[length] * num_convos
     st.markdown(f"""
     <div class="summary-box">
-      <div class="summary-row"><span>Turns per chat</span><span class="val">{LENGTH_MAP[length]}</span></div>
-      <div class="summary-row"><span>Total exchanges</span><span class="val">{LENGTH_MAP[length] * num_convos * 2}</span></div>
+      <div class="summary-row"><span>Messages per conversation</span><span class="val">{LENGTH_MAP[length]}</span></div>
+      <div class="summary-row"><span>Total messages</span><span class="val">{total_messages}</span></div>
+      <!--<div class="summary-row"><span>= {LENGTH_MAP[length]} turns × {num_convos} convos × 2 msg/turn</span></div>-->
     </div>
     """, unsafe_allow_html=True)
 
@@ -169,7 +171,7 @@ if generate_btn:
         st.warning("Please enter a niche / topic domain.")
         st.stop()
 
-    with st.spinner("Crafting conversations with Gemini…"):
+    with st.spinner("SynthChat is Crafting conversations..."):
         try:
             raw = generate_conversations(niche.strip(), instructions.strip(), num_convos, length)
             conversations = clean_and_parse(raw)
