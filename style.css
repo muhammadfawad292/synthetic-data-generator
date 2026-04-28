@@ -7,7 +7,7 @@
   --surface:    #111318;
   --surface2:   #181b22;
   --border:     #1f2330;
-  --accent:     #7effa0;
+  --accent:     #2ecc71;
   --accent2:    #4fd1ff;
   --accent3:    #ff7eb3;
   --text:       #e8eaf0;
@@ -167,6 +167,15 @@ html, body, [data-testid="stAppViewContainer"] {
   color: var(--accent);
   font-weight: 500;
 }
+/* .summary-row:last-child {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.72rem;
+  color: rgba(107,114,128,0.7);
+  border-top: 1px solid var(--border);
+  margin-top: 0.3rem;
+  padding-top: 0.4rem;
+  justify-content: center; */
+/* } */
 
 /* ── Generate Button ─────────────────────────────────────── */
 [data-testid="stButton"] > button[kind="primary"] {
