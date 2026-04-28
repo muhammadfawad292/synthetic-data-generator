@@ -1,0 +1,282 @@
+/* ── Imports ─────────────────────────────────────────────── */
+@import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=JetBrains+Mono:wght@400;500&family=Inter:wght@300;400;500&display=swap');
+
+/* ── Root Variables ──────────────────────────────────────── */
+:root {
+  --bg:         #0a0c10;
+  --surface:    #111318;
+  --surface2:   #181b22;
+  --border:     #1f2330;
+  --accent:     #7effa0;
+  --accent2:    #4fd1ff;
+  --accent3:    #ff7eb3;
+  --text:       #e8eaf0;
+  --muted:      #6b7280;
+  --user-bg:    #13192a;
+  --bot-bg:     #0d1f17;
+  --radius:     14px;
+  --radius-sm:  8px;
+}
+
+/* ── Global Reset ────────────────────────────────────────── */
+html, body, [data-testid="stAppViewContainer"] {
+  background: var(--bg) !important;
+  font-family: 'Inter', sans-serif !important;
+  color: var(--text) !important;
+}
+
+[data-testid="stHeader"] { background: transparent !important; }
+[data-testid="stToolbar"] { display: none !important; }
+.block-container { padding: 2rem 3rem 4rem !important; max-width: 1100px !important; }
+
+/* ── Hero ────────────────────────────────────────────────── */
+.hero {
+  text-align: center;
+  padding: 3.5rem 1rem 2.5rem;
+  position: relative;
+}
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse 70% 60% at 50% 0%, rgba(126,255,160,0.07) 0%, transparent 70%);
+  pointer-events: none;
+}
+.hero-badge {
+  display: inline-block;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  color: var(--accent);
+  border: 1px solid rgba(126,255,160,0.3);
+  border-radius: 999px;
+  padding: 0.3rem 1rem;
+  margin-bottom: 1.2rem;
+  background: rgba(126,255,160,0.05);
+}
+.hero-title {
+  font-family: 'Syne', sans-serif !important;
+  font-size: clamp(3rem, 8vw, 5.5rem) !important;
+  font-weight: 800 !important;
+  letter-spacing: -0.03em !important;
+  color: var(--text) !important;
+  line-height: 1 !important;
+  margin: 0 0 0.8rem !important;
+}
+.hero-title .accent { color: var(--accent); }
+.hero-sub {
+  font-size: 1.05rem;
+  color: var(--muted);
+  max-width: 520px;
+  margin: 0 auto;
+  line-height: 1.7;
+  font-weight: 300;
+}
+
+/* ── Alert ───────────────────────────────────────────────── */
+.alert-box {
+  background: rgba(255,126,179,0.08);
+  border: 1px solid rgba(255,126,179,0.25);
+  border-radius: var(--radius);
+  padding: 1rem 1.4rem;
+  color: #ffb3cc;
+  font-size: 0.9rem;
+  line-height: 1.7;
+}
+.alert-box code {
+  background: rgba(255,255,255,0.08);
+  padding: 0.1em 0.4em;
+  border-radius: 4px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.85em;
+}
+
+/* ── Section Label ───────────────────────────────────────── */
+.section-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.72rem;
+  letter-spacing: 0.14em;
+  color: var(--muted);
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 0.5rem;
+}
+
+/* ── Streamlit Inputs ────────────────────────────────────── */
+[data-testid="stTextInput"] input,
+[data-testid="stTextArea"] textarea {
+  background: var(--surface) !important;
+  border: 1px solid var(--border) !important;
+  border-radius: var(--radius-sm) !important;
+  color: var(--text) !important;
+  font-family: 'Inter', sans-serif !important;
+  font-size: 0.92rem !important;
+  transition: border-color 0.2s !important;
+}
+[data-testid="stTextInput"] input:focus,
+[data-testid="stTextArea"] textarea:focus {
+  border-color: var(--accent) !important;
+  box-shadow: 0 0 0 3px rgba(126,255,160,0.1) !important;
+  outline: none !important;
+}
+[data-testid="stTextInput"] label,
+[data-testid="stTextArea"] label,
+[data-testid="stSlider"] label,
+[data-testid="stRadio"] label {
+  color: var(--text) !important;
+  font-size: 0.88rem !important;
+  font-weight: 500 !important;
+}
+
+/* ── Slider ──────────────────────────────────────────────── */
+[data-testid="stSlider"] [data-baseweb="slider"] [role="slider"] {
+  background: var(--accent) !important;
+  border-color: var(--accent) !important;
+}
+[data-testid="stSlider"] [data-baseweb="track"] {
+  background: var(--surface2) !important;
+}
+
+/* ── Radio ───────────────────────────────────────────────── */
+[data-testid="stRadio"] [data-baseweb="radio"] input:checked + div {
+  background-color: var(--accent) !important;
+  border-color: var(--accent) !important;
+}
+[data-testid="stRadio"] [data-baseweb="radio"] div {
+  border-color: var(--border) !important;
+}
+
+/* ── Summary Box ─────────────────────────────────────────── */
+.summary-box {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 0.9rem 1.1rem;
+  margin-top: 0.8rem;
+}
+.summary-row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.85rem;
+  color: var(--muted);
+  padding: 0.25rem 0;
+}
+.summary-row .val {
+  font-family: 'JetBrains Mono', monospace;
+  color: var(--accent);
+  font-weight: 500;
+}
+
+/* ── Generate Button ─────────────────────────────────────── */
+[data-testid="stButton"] > button[kind="primary"] {
+  background: var(--accent) !important;
+  color: #050a08 !important;
+  border: none !important;
+  border-radius: var(--radius-sm) !important;
+  font-family: 'Syne', sans-serif !important;
+  font-size: 0.95rem !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.02em !important;
+  padding: 0.75rem !important;
+  transition: all 0.2s !important;
+}
+[data-testid="stButton"] > button[kind="primary"]:hover {
+  background: #a8ffbf !important;
+  transform: translateY(-1px);
+  box-shadow: 0 6px 24px rgba(126,255,160,0.25) !important;
+}
+
+/* ── Download Buttons ────────────────────────────────────── */
+[data-testid="stDownloadButton"] button {
+  background: var(--surface2) !important;
+  border: 1px solid var(--border) !important;
+  color: var(--text) !important;
+  border-radius: var(--radius-sm) !important;
+  font-size: 0.85rem !important;
+  font-weight: 500 !important;
+  transition: all 0.18s !important;
+}
+[data-testid="stDownloadButton"] button:hover {
+  border-color: var(--accent2) !important;
+  color: var(--accent2) !important;
+  background: rgba(79,209,255,0.06) !important;
+}
+
+/* ── Output Header ───────────────────────────────────────── */
+.output-header { margin-bottom: 0.5rem; }
+.output-meta { display: flex; gap: 0.5rem; flex-wrap: wrap; }
+.tag {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.73rem;
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  padding: 0.25rem 0.75rem;
+  color: var(--muted);
+}
+
+/* ── Expander ────────────────────────────────────────────── */
+[data-testid="stExpander"] {
+  background: var(--surface) !important;
+  border: 1px solid var(--border) !important;
+  border-radius: var(--radius) !important;
+  margin-bottom: 0.75rem !important;
+  overflow: hidden;
+}
+[data-testid="stExpander"] summary {
+  font-family: 'JetBrains Mono', monospace !important;
+  font-size: 0.82rem !important;
+  color: var(--muted) !important;
+  padding: 0.85rem 1.1rem !important;
+}
+[data-testid="stExpander"] summary:hover { color: var(--text) !important; }
+[data-testid="stExpander"] details { background: transparent !important; }
+
+/* ── Chat Bubbles ────────────────────────────────────────── */
+.bubble {
+  border-radius: var(--radius-sm);
+  padding: 0.85rem 1.1rem;
+  margin-bottom: 0.6rem;
+  position: relative;
+  line-height: 1.65;
+}
+.bubble p {
+  margin: 0 !important;
+  font-size: 0.9rem !important;
+  color: var(--text) !important;
+}
+.bubble-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.68rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  display: block;
+  margin-bottom: 0.45rem;
+}
+.user-bubble {
+  background: var(--user-bg);
+  border: 1px solid rgba(79,209,255,0.12);
+  border-left: 3px solid var(--accent2);
+  margin-right: 2rem;
+}
+.user-bubble .bubble-label { color: var(--accent2); }
+.bot-bubble {
+  background: var(--bot-bg);
+  border: 1px solid rgba(126,255,160,0.12);
+  border-left: 3px solid var(--accent);
+  margin-left: 2rem;
+}
+.bot-bubble .bubble-label { color: var(--accent); }
+
+/* ── Spinner ─────────────────────────────────────────────── */
+[data-testid="stSpinner"] {
+  color: var(--accent) !important;
+}
+
+/* ── Scrollbar ───────────────────────────────────────────── */
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: var(--muted); }
